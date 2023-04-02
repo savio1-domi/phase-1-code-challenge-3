@@ -24,10 +24,10 @@ If you wish to access this repository, you must have a computer that runs either
 
 -Open your terminal/CLI then clone the repo using the link you would have forked and copied.Ensure its on the directory you can easily navigate to.
 
-      git clone https://github.com/savio1-domi/phase-1-wk-3-code-challenge
+      git clone https://github.com/savio1-domi/phase-1-code-challenge-3
 -Then change directory to the repo folder.
 
-      cd phase-1-wk-3-code-challenge
+      cd phase-1-code-challenge-3
 
 
 -Open it in Visual Studio Code by typing. 
