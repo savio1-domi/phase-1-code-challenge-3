@@ -1,6 +1,6 @@
-
+const url = "http://localhost:3000/films"
 function fetchData() {
-    fetch("localhost:3000/films")
+    fetch(url)
       .then((response) => response.json())
       .then((data) => appendFirstMovie(data.films));
   }
@@ -42,7 +42,7 @@ function fetchData() {
 
   //fetches list of movies in the menu section
   function appendMenu() {
-    fetch("localhost:3000/films")
+    fetch(url)
       .then((response) => response.json())
       .then((data) => menuTitles(data.films));
   }
