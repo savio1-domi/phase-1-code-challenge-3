@@ -1,6 +1,5 @@
-const url = "https://vincentchisaka.github.io/json-data/db.json"
 function fetchData() {
-    fetch(url)
+    fetch("http://localhost:3000/films")
       .then((response) => response.json())
       .then((data) => appendFirstMovie(data.films));
   }
@@ -42,7 +41,7 @@ function fetchData() {
 
   //fetches list of movies in the menu section
   function appendMenu() {
-    fetch(url)
+    fetch("http://localhost:3000/films")
       .then((response) => response.json())
       .then((data) => menuTitles(data.films));
   }

@@ -1,5 +1,5 @@
 body {
-    background-color: rgb(134, 134, 143);
+    background-image: url(movie3.jpg);
     height: 1000px;
   }
   #movieDetail{
@@ -13,6 +13,8 @@ body {
   }
   h1 {
     text-align: center;
+    color: white;
+    font-size: 80px;
   }
 
   #pic{
@@ -26,7 +28,7 @@ body {
   #info{
      margin-top: 5em;
       margin: auto;
-      background-color:rgb(219, 216, 212);
+      background-image: url(movie2.jpg);
       color: #ff6600;
       height: 360px;
       font:1.2em/1.6em Verdana, Helvetica, Arial, sans-serif;
@@ -41,13 +43,14 @@ body {
     #menu {
       padding-top: 3em;
       padding-left: 1em;
-      background-color: darkpu;
+      background-image: url(movie3.jpg);
       height: 100%;
       width: 400px;
       float: left;
       margin-left: 1em;
-      color:cyan;
+      color: cyan;
     }
+    
     #list {
     cursor: pointer;
     margin: 1em;
@@ -72,5 +75,15 @@ body {
 
     #title{
       font-weight: 700;
-      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+      font-family: 'Trebuchet MS' ;
+    }
+    div {
+      background-color: rgb(35, 35, 37);
+    }
+    h2 {
+      color: white;
+
+    }
+    img {
+      text-align: center;
     }
