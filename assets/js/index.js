@@ -1,4 +1,4 @@
-const url = "http://localhost:3000/films"
+const url = "https://flatdango.vercel.app/db.json"
 function fetchData() {
     fetch(url)
       .then((response) => response.json())
@@ -37,7 +37,7 @@ function fetchData() {
     image.src = `
       ${first.poster}
       `;
-    butonn.appendChild(button);
+    buton.appendChild(button);
   }
 
   //fetches list of movies in the menu section
