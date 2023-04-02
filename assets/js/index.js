@@ -1,58 +1,100 @@
-//Global variables
-// const runTimeDisplay = 
-const movieList = document.getElementById('show-movies')
-window.addEventListener('DOMContentLoaded', ()=>{
-    // fetches everything from db.json server
-    const fetchMovieList = fetch('/db.json')
-    fetchMovieList.then(res => res.json()).then(data => {
-        const films = data.films
-        // loops through all the movies
-        films.map(film => {
-            // return the title of all movies
-            const movie = film.title
-            const list = document.createElement('ul')
-            list.innerHTML = `
-                <li>${movie}</li>
-            `
-            list.style.cursor = 'pointer'
-            list.addEventListener('click', () => {
-                return showMovies(film)
-            })
-            movieList.appendChild(list)
-        })
+const url = "https://vincentchisaka.github.io/json-data/db.json"
+function fetchData() {
+    fetch(url)
+      .then((response) => response.json())
+      .then((data) => appendFirstMovie(data.films));
+  }
+  fetchData();
 
-        function showMovies(movie){
-            const movieClicked = document.getElementById('movies')
-            movieClicked.innerHTML = `
-                <img src=${movie.poster}>
-                <h5>${movie.title}</h5>
-                <h5>${movie.description}</h5>
-            `
+  //append first movie when the page loads
+  function appendFirstMovie(data) {
+    let first = data[0];
+    let butonn = document.getElementById("button");
+    butonn.innerHTML = "";
+    let image = document.getElementById("pic");
+    let title = document.getElementById("title");
+    let runtime = document.getElementById("runtime");
+    let showtime = document.getElementById("showtime");
+    let tickets = document.getElementById("tickets");
+    let description = document.getElementById("description");
+    let button = document.createElement("button");
+    button.id = "btn";
+    button.textContent = "Buy Ticket";
+    let total = first.capacity - first.tickets.sold;
+    button.addEventListener("click", () => {
+      if (total > 0) {
+        total -= 1;
+        document.getElementById("tickets").innerHTML = total;
+      } else if (total < 1) {
+        document.getElementById("tickets").innerHTML = "*No tickets available";
+      }
+    });
+    title.textContent = first.title;
+    runtime.textContent = first.runtime;
+    showtime.textContent = first.showtime;
+    tickets.textContent = first.capacity - first.tickets_sold;
+    description.textContent = first.description;
+    image.src = `
+      ${first.poster}
+      `;
+    butonn.appendChild(button);
+  }
 
-            getOtherInfo(movie)
-        }
-        function getOtherInfo(movie){
-            const otherInfo = document.getElementById('movie-info')
-            let bal = movie.capacity - movie.tickets_sold
-            otherInfo.innerHTML = `
-                <h4>Run Time: ${movie.runtime}</h4>
-                <h4>Show Time: ${movie.showtime}</h4>
-                <h4>Available Tickets: <span id='remain'>${bal}</span></h4>
-                <button id=buyTicket>Buy Ticket</button>
-            `
-            const btn = document.getElementById('buyTicket')
-            btn.addEventListener('click', ()=>{
-                return buyTicket(bal--, btn)
-            })
-        }
+  //fetches list of movies in the menu section
+  function appendMenu() {
+    fetch(url)
+      .then((response) => response.json())
+      .then((data) => menuTitles(data.films));
+  }
+  appendMenu();
 
-        function buyTicket(bal, btn){
-            const remain = document.getElementById('remain')
-            if(bal === 0){
-                btn.disabled = true
-            }
-            return remain.textContent = bal;
-        }
+  //Displays menu titles on the menu section
+  function menuTitles(data) {
+    data.forEach((item) => {
+      let title = document.createElement("li");
+      title.id = "list";
+      title.addEventListener("click", () => {
+        const i = item.id;
+        appendIndividualDetails(data[i - 1]);
+      });
+      let menu = document.getElementById("menu");
+      title.textContent = item.title;
+      menu.appendChild(title);
+    });
+  }
 
-    })
-})
+  //appends details of the specific name that is clicked on the
+  function appendIndividualDetails(item) {
+    let butonn = document.getElementById("button");
+    butonn.innerHTML = "";
+    let image = document.getElementById("pic");
+    let title = document.getElementById("title");
+    let runtime = document.getElementById("runtime");
+    let showtime = document.getElementById("showtime");
+    let tickets = document.getElementById("tickets");
+    let description = document.getElementById("description");
+    let button = document.createElement("button");
+    button.id = "btn";
+    button.textContent = "Buy Ticket";
+    let total = item.capacity - item.tickets_sold;
+    //adds button fo buying tickets.
+    button.addEventListener("click", () => {
+      //if tickets available is greater than 0 the total amount decreses by one every time it is pressed otherwise it prints a message
+      if (total > 0) {
+        total -= 1;
+        document.getElementById("tickets").innerHTML = total;
+      } else if (total < 1) {
+        document.getElementById("tickets").innerHTML = "*No tickets available";
+      }
+    });
+
+    title.textContent = item.title;
+    runtime.textContent = item.runtime;
+    showtime.textContent = item.showtime;
+    tickets.textContent = item.capacity - item.tickets_sold;
+    description.textContent = item.description;
+    image.src = `
+      ${item.poster}
+      `;
+    butonn.appendChild(button);
+  }
