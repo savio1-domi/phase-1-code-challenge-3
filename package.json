@@ -1,0 +1,20 @@
+{
+  "name": "phase-1-code-challenge-3",
+  "version": "1.0.0",
+  "description": "Flatdango is a web application that allows users to purchase movie tickets from Flatiron Movie Theater. This application fetches movie data from a local server running JSON DB server and displays the movie details on the frontend. The user can select a movie from the menu and buy a ticket. The number of available tickets is displayed and decreases when the user buys a ticket.",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/savio1-domi/phase-1-code-challenge-3.git"
+  },
+  "author": "Senior Dev Dominic Juma",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/savio1-domi/phase-1-code-challenge-3/issues"
+  },
+  "homepage": "https://github.com/savio1-domi/phase-1-code-challenge-3#readme",
+  "dependencies": {
+    "json-server": "^0.17.3"
+  }
+}
