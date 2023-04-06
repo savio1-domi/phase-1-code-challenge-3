@@ -1,10 +1,11 @@
 const url = "https://flatdango.vercel.app/db.json"
-function fetchData() {
-    fetch(url)
-      .then((response) => response.json())
-      .then((data) => appendFirstMovie(data.films));
-  }
-  fetchData();
+
+//fetches data from the API and returns a Promise
+async function fetchData() {
+  const response = await fetch(url);
+  const data = await response.json();
+  return data.films;
+}
 
   //append first movie when the page loads
   function appendFirstMovie(data) {
